@@ -18,6 +18,6 @@ public class NewSurvey {
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void newSurvey(@RequestBody Survey survey) {
-        // Save somewhere
+        repository.publish(survey);
     }
 }
