@@ -1,4 +1,4 @@
-package integration;
+package integration.controllers;
 
 
 import org.junit.Test;

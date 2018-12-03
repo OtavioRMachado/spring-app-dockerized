@@ -1,4 +1,4 @@
-package survey;
+package survey.controllers;
 
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -18,13 +18,14 @@ import java.util.List;
 @Controller
 public class SurveyController {
 
+    @Autowired
+    private SurveyRepository repository;
+
     public SurveyController () {}
+
     public SurveyController (SurveyRepository repository) {
         this.repository = repository;
     }
-
-    @Autowired
-    private SurveyRepository repository;
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
