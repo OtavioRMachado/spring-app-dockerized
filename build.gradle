@@ -31,4 +31,5 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile("org.projectlombok:lombok:1.18.4")
     testCompile("junit:junit")
+    testCompile("org.mockito:mockito-core:1.+")
 }

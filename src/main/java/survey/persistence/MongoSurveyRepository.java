@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 import survey.dto.Survey;
 
+import java.util.Collection;
+
 @Repository
 public class MongoSurveyRepository implements SurveyRepository {
 
@@ -25,5 +27,10 @@ public class MongoSurveyRepository implements SurveyRepository {
             return ERROR;
         }
         return SUCCESSFUL;
+    }
+
+    @Override
+    public Collection<Survey> fetchAll() {
+        return template.findAll(Survey.class);
     }
 }
