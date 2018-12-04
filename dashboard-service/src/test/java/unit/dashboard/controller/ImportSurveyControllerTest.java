@@ -2,7 +2,7 @@ package unit.dashboard.controller;
 
 import dashboard.controller.ImportSurveyController;
 import dashboard.dto.Survey;
-import dashboard.services.SurveyService;
+import dashboard.service.SurveyService;
 import org.assertj.core.util.Lists;
 import org.junit.Test;
 

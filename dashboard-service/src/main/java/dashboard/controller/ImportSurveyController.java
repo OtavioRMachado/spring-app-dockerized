@@ -1,7 +1,7 @@
 package dashboard.controller;
 
 import dashboard.dto.Survey;
-import dashboard.services.SurveyService;
+import dashboard.service.SurveyService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

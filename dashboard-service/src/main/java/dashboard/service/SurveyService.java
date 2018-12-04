@@ -1,4 +1,4 @@
-package dashboard.services;
+package dashboard.service;
 
 import dashboard.dto.Survey;
 import dashboard.persistence.SurveyRepository;
@@ -25,9 +25,6 @@ public class SurveyService {
         this.template = restTemplate;
         this.repository = surveyRepository;
     }
-
-    public static final Integer ERROR = 0;
-    public static final Integer SUCCESS = 1;
 
     @Value("#{'${survey.service.list}'.split(',')}")
     private List<String> serviceUrls;

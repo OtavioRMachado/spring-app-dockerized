@@ -1,8 +1,8 @@
-package unit.controllers;
+package unit.controller;
 
 import org.junit.Test;
 import org.mockito.Mockito;
-import survey.controllers.SurveyController;
+import survey.controller.SurveyController;
 import survey.dto.Survey;
 import survey.persistence.MongoSurveyRepository;
 import survey.persistence.SurveyRepository;

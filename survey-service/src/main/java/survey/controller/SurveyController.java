@@ -1,19 +1,14 @@
-package survey.controllers;
+package survey.controller;
 
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import survey.dto.Survey;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import survey.persistence.SurveyRepository;
 
 import java.util.Collection;
-import java.util.List;
 
 @Controller
 public class SurveyController {

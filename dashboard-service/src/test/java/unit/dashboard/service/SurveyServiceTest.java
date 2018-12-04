@@ -1,13 +1,12 @@
-package unit.dashboard.services;
+package unit.dashboard.service;
 
 import dashboard.dto.Survey;
 import dashboard.persistence.SurveyRepository;
-import dashboard.services.SurveyService;
+import dashboard.service.SurveyService;
 import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
