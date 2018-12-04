@@ -34,7 +34,7 @@ public class SurveyServiceTest {
         ReflectionTestUtils.setField(service, "serviceUrls", Arrays.asList(surveyServiceUrl));
         when(mock.exchange(surveyServiceUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<Survey>>(){}))
                 .thenReturn(new ResponseEntity<>(Arrays.asList(), HttpStatus.OK));
-        service.fetchSurveys();
+        service.fetchSurveysFromThirdParties();
 
         verify(mock).exchange(surveyServiceUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<Survey>>(){});
     }

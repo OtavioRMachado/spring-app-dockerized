@@ -1,7 +1,9 @@
 package integration.dashboard.controller;
 
 import dashboard.dto.Survey;
+import dashboard.persistence.SurveyRepository;
 import integration.dashboard.IntegrationTest;
+import org.assertj.core.util.Lists;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -15,7 +17,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
@@ -28,13 +29,16 @@ public class ImportSurveyControllerTest extends IntegrationTest {
     private MockMvc mockMvc;
 
     @Autowired
-    RestTemplate template;
+    RestTemplate restTemplate;
+
+    @Autowired
+    SurveyRepository surveyRepository;
 
     @Test
     public void shouldReturn200dWhenDoingFetchRequest() throws Exception {
 
         Survey exampleSurvey = new Survey("Otavio", 27, "Porto Alegre", "macOS", 5);
-        when(template.exchange(anyString(), eq(GET), eq(null), eq(new ParameterizedTypeReference<List<Survey>>() {})))
+        when(restTemplate.exchange(anyString(), eq(GET), eq(null), eq(new ParameterizedTypeReference<List<Survey>>() {})))
                 .thenReturn(new ResponseEntity<>(Arrays.asList(exampleSurvey), HttpStatus.OK));
 
         mockMvc.perform(
@@ -42,5 +46,15 @@ public class ImportSurveyControllerTest extends IntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
+    }
+
+    @Test
+    public void shouldReturnEmptyArrayWhenFetchingAllSurveys() throws Exception {
+        when(surveyRepository.fetchAll()).thenReturn(Lists.newArrayList());
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/find")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 }

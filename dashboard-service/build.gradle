@@ -33,7 +33,7 @@ targetCompatibility = 1.8
 dependencies {
     compile("org.springframework.boot:spring-boot-starter")
     compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-data-elasticsearch")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile("org.projectlombok:lombok:1.18.4")
     testCompile("junit:junit")
     testCompile("org.springframework.boot:spring-boot-starter-test")

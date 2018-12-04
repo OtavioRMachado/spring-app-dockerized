@@ -13,11 +13,11 @@ public class ImportSurveyControllerTest {
     @Test
     public void shouldCallSurveyService() {
         SurveyService serviceMock = mock(SurveyService.class);
-        when(serviceMock.fetchSurveys()).thenReturn(new HashMap<>());
+        when(serviceMock.fetchSurveysFromThirdParties()).thenReturn(new HashMap<>());
 
         ImportSurveyController controller = new ImportSurveyController(serviceMock);
         controller.fetch();
 
-        verify(serviceMock).fetchSurveys();
+        verify(serviceMock).importAndSaveSurveys();
     }
 }
