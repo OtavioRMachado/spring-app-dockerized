@@ -21,8 +21,9 @@ import static org.springframework.http.HttpMethod.GET;
 @NoArgsConstructor
 public class SurveyService {
 
-    public SurveyService(RestTemplate template) {
-        this.template = template;
+    public SurveyService(RestTemplate restTemplate, SurveyRepository surveyRepository) {
+        this.template = restTemplate;
+        this.repository = surveyRepository;
     }
 
     public static final Integer ERROR = 0;

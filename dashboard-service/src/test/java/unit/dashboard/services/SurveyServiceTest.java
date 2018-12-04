@@ -1,10 +1,13 @@
 package unit.dashboard.services;
 
 import dashboard.dto.Survey;
+import dashboard.persistence.SurveyRepository;
 import dashboard.services.SurveyService;
+import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,16 +31,30 @@ public class SurveyServiceTest {
     }
 
     @Test
-    public void shouldCallRestTemplate() throws NoSuchFieldException {
+    public void shouldCallRestTemplateOnFetchSurveysFromThirdParties() throws NoSuchFieldException {
         RestTemplate mock = mock(RestTemplate.class);
-        SurveyService service = new SurveyService(mock);
+        SurveyService service = new SurveyService(mock, null);
         ReflectionTestUtils.setField(service, "serviceUrls", Arrays.asList(surveyServiceUrl));
+
         when(mock.exchange(surveyServiceUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<Survey>>(){}))
                 .thenReturn(new ResponseEntity<>(Arrays.asList(), HttpStatus.OK));
+
         service.fetchSurveysFromThirdParties();
 
         verify(mock).exchange(surveyServiceUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<Survey>>(){});
     }
 
+    @Test
+    public void shouldCallSurveyRepositoryOnfetchSurveys() {
+        SurveyRepository mock = mock(SurveyRepository.class);
 
+        SurveyService service = new SurveyService(null, mock);
+        ReflectionTestUtils.setField(service, "serviceUrls", Arrays.asList(surveyServiceUrl));
+        when(mock.fetchAll())
+                .thenReturn(Lists.emptyList());
+
+        service.fetchSurveys();
+
+        verify(mock).fetchAll();
+    }
 }

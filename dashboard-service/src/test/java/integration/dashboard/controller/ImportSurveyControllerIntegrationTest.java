@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class ImportSurveyControllerTest extends IntegrationTest {
+public class ImportSurveyControllerIntegrationTest extends IntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
