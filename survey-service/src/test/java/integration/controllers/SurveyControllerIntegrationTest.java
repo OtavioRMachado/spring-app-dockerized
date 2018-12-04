@@ -1,6 +1,7 @@
 package integration.controllers;
 
 
+import integration.IntegrationTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +12,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import survey.Application;
+import survey.persistence.SurveyRepository;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(classes = Application.class)
-@RunWith(SpringRunner.class)
-@AutoConfigureMockMvc
-public class SurveyControllerIntegrationTest {
+public class SurveyControllerIntegrationTest extends IntegrationTest {
+
+    @Autowired
+    SurveyRepository surveyRepository;
 
     @Autowired
     private MockMvc mockMvc;
