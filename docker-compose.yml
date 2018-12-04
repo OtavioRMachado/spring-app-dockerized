@@ -1,0 +1,23 @@
+version: "2.1"
+services:
+  mongo:
+    image: mongo:3.2.4
+    ports:
+      - 27017:27017
+
+  dashboard-service:
+    build: ./dashboard-service/
+    ports:
+      - 8090:8090
+    links:
+      - mongo
+      - survey-service
+    entrypoint: "java -Dsurvey.service.list=http://survey-service:8080/export -Dserver.port=8090 -Dspring.data.mongodb.uri=mongodb://mongo:27017/dashboarddb -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
+
+  survey-service:
+    build: ./survey-service/
+    ports:
+      - 8080:8080
+    links:
+      - mongo
+    entrypoint: "java -Dspring.data.mongodb.uri=mongodb://mongo:27017/surveydb -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
