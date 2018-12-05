@@ -87,3 +87,4 @@ As for if these applications would grow, I would also add:
 - Separate integration tests run from unit tests;
 - Create performance and journey tests;
 - Think about having a microservice to fetch data from all third party systems, translate them to an agnostic language and send them via Messaging
+- Grow into a more DDD oriented format. Standard MVC organization works great, but as soon as we involve different business contexts and logic, it can get messy.
