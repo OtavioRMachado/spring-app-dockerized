@@ -3,7 +3,7 @@
 ## Running the Application
 I created two different applications using Java 8, Springboot, Gradle and MongoDB, mainly out of familiarity with this tech stack.
 
-First of all, you need to run the build. To run the build, you will need `Gradle` installed in your machine.
+First of all, you need to run the build to generate the Jar files. To run the build, you will need `Gradle` installed in your machine.
 After you install it, you should enter each project specific root directory `survey-service` and `dashboard-service` and run on each
 
         gradle build
