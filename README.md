@@ -3,7 +3,12 @@
 ## Running the Application
 I created two different applications using Java 8, Springboot, Gradle and MongoDB, mainly out of familiarity with this tech stack.
 
-If you have docker installed in your machine, you can run the application using 
+First of all, you need to run the build. To run the build, you will need `Gradle` installed in your machine.
+After you install it, you should enter each project specific root directory `survey-service` and `dashboard-service` and run on each
+
+        gradle build
+
+Then, if you have docker installed in your machine, you can run the application using 
 
 	docker-compose up dashboard-service
 	
@@ -70,7 +75,7 @@ For the dockerization, I found an image that already dealed with boostraping a S
 ## Next Steps
 As I started giving up on some things in order to deliver something usable, I took notes on everything that I could do better, if I had the time. They are:
 
-- Running tests inside a docker container so people don't need to have anything (well, besides docker) installed in their machine – and it would be easier to integrate with a CI pipeline and move to Continuous Delivery;
+- Running the build and tests inside a docker container so people don't need to have anything (well, besides docker) installed in their machine – and it would be easier to integrate with a CI pipeline and move to Continuous Delivery;
 - Cleaning the survey-service database after /export has been called, or adding an information on all the surveys that have already been served before.
 - Better error handling: I feel that I used the most of what Spring brings out of the box, but I would love some more readable error handling;
 - Creating some sort of Circuit breaker for the /fetch, so we can handle possible temporary failures from the third party services;
